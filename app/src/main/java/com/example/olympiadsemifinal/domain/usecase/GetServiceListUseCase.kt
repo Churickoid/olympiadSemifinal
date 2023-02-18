@@ -8,5 +8,4 @@ class GetServiceListUseCase(private val serviceRepository: ServiceRepository) {
     suspend operator fun invoke(): List<Service> {
         return serviceRepository.getServiceList()
     }
-    
 }
