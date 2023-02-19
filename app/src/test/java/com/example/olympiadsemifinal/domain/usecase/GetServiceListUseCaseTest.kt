@@ -19,7 +19,7 @@ class GetServiceListUseCaseTest {
         val testRepository = TestRepository()
         val useCase = GetServiceListUseCase(testRepository)
         val actual = runBlocking { useCase.invoke() }
-        val excepted = "TEST_LIST"
+        val excepted = TEST_LIST
 
         assertEquals(actual, excepted)
 
