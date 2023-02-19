@@ -9,10 +9,12 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.olympiadsemifinal.R
 import com.example.olympiadsemifinal.databinding.FragmentListBinding
+
+import com.example.olympiadsemifinal.presentation.contract.navigation
 import com.example.olympiadsemifinal.presentation.screen.factory
 import com.example.olympiadsemifinal.presentation.screen.list.ListViewModel.Companion
 
-class ListFragment: Fragment() {
+class ListFragment : Fragment() {
 
     private lateinit var binding: FragmentListBinding
     private lateinit var servicesAdapter: ServicesAdapter
@@ -23,7 +25,7 @@ class ListFragment: Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_list,container,false)
+        return inflater.inflate(R.layout.fragment_list, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -39,20 +41,20 @@ class ListFragment: Fragment() {
             viewModel.getServiceList()
         }
 
-        viewModel.state.observe(viewLifecycleOwner){
-            when(it){
+        viewModel.state.observe(viewLifecycleOwner) {
+            when (it) {
                 Companion.STATE_LOADING -> {
                     binding.loadingProgressBar.visibility = View.VISIBLE
                     binding.recyclerView.visibility = View.INVISIBLE
                     binding.retryButton.visibility = View.INVISIBLE
 
                 }
-                Companion.STATE_SUCCESS ->{
+                Companion.STATE_SUCCESS -> {
                     binding.loadingProgressBar.visibility = View.INVISIBLE
                     binding.recyclerView.visibility = View.VISIBLE
                     binding.retryButton.visibility = View.INVISIBLE
                 }
-                Companion.STATE_ERROR->{
+                Companion.STATE_ERROR -> {
                     binding.loadingProgressBar.visibility = View.INVISIBLE
                     binding.recyclerView.visibility = View.INVISIBLE
                     binding.retryButton.visibility = View.VISIBLE
@@ -64,6 +66,7 @@ class ListFragment: Fragment() {
 
 
     }
+
     private fun setupRecyclerView() {
         val layoutManager = LinearLayoutManager(context)
         binding.recyclerView.layoutManager = layoutManager
@@ -72,7 +75,8 @@ class ListFragment: Fragment() {
         binding.recyclerView.adapter = servicesAdapter
 
         servicesAdapter.onItemClickListener = {
-
+            navigation().showInfoScreen(it)
         }
     }
+
 }

@@ -12,7 +12,7 @@ class ViewModelFactory(private val app: App) : ViewModelProvider.Factory {
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         val viewModel = when(modelClass){
-            ListViewModel :: class.java -> {
+            ListViewModel::class.java -> {
                 ListViewModel(app.container.getServiceListUseCase)
             }
             else ->{

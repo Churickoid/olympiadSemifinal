@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">olympiadSemifinal</string>
-    <string name="url"><u>url.com</u></string>
     <string name="retry">Retry</string>
+    <string name="icon">icon</string>
 </resources>

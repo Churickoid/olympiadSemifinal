@@ -3,7 +3,6 @@ package com.example.olympiadsemifinal.presentation.screen.list
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.CheckBox
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -32,16 +31,11 @@ class ServicesAdapter : RecyclerView.Adapter<ServicesAdapter.ServiceViewHolder>(
         val serviceElement = serviceList[position]
         with(holder) {
             serviceName.text = serviceElement.name
-            if (serviceElement.service_url.isNotBlank()) {
-                Glide.with(serviceIcon.context)
-                    .load(serviceElement.icon_url)
-                    .placeholder(R.drawable.loading_icon)
-                    .error(R.drawable.question_icon)
-                    .into(serviceIcon)
-            } else {
-                Glide.with(serviceIcon.context).clear(serviceIcon)
-                serviceIcon.setImageResource(R.drawable.question_icon)
-            }
+            Glide.with(serviceIcon.context)
+                .load(serviceElement.icon_url)
+                .placeholder(R.drawable.loading_icon)
+                .error(R.drawable.question_icon)
+                .into(serviceIcon)
             itemView.setOnClickListener {
                 onItemClickListener?.invoke(serviceElement)
             }
@@ -55,5 +49,6 @@ class ServicesAdapter : RecyclerView.Adapter<ServicesAdapter.ServiceViewHolder>(
     }
 
 }
+
 
 

@@ -3,24 +3,23 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="4dp"
+    android:focusable="true"
+    android:clickable="true"
+    android:foreground="?android:attr/selectableItemBackground"
     >
-
     <ImageView
         android:id="@+id/iconImageView"
         android:layout_width="64dp"
         android:layout_height="64dp"
         android:layout_marginHorizontal="8dp"
         android:padding="8dp"
-        android:src="@drawable/question_icon"
-        />
+        android:contentDescription="@string/icon" />
     <TextView
         android:id="@+id/nameTextView"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:gravity="center_vertical"
-        android:text="Облако"
         android:textSize="24sp"
         />
 
